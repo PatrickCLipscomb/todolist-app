@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="container row">
-      <div class="col-md-6">
+      <div class="col-md-6"><!--for adding a new to do item -->
         <form class="form-group" id='addNewItem'>
           <div class="container jumbotron">
             <label for="addName">Name</label>
@@ -29,9 +29,9 @@
         </form>
       </div>
     </div>
-    <div class="container row">
+    <div class="container row"><!--for creating a new to-do group -->
       <div class="col-md-6">
-        <form class="form-group" id='addNewItem'>
+        <form class="form-group" id='addNewGroup'>
           <div class="container jumbotron">
             <label for="addGroupName">Name</label>
             <input type="text" id='addGroupName'>
@@ -40,6 +40,53 @@
           </div>
           <button type="submit" class='btn btn-primary'>Add Group</button>
         </form>
+      </div>
+    </div>
+    <div class="container row"><!--for navbar -->
+      <div class="col-md-6">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">ToDo List App</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Groups
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">All</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Filters
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li id="alphabetical"><a href="#">Alphabetical</a></li>
+                  <li id="dueSoonest"><a href="#">Due Soonest</a></li>
+                  <li id="shortestTime"><a href="#">Shortest Time</a></li>
+                  <li id="longestTime"><a href="#">Longest Time</a></li>
+                  <li id="dateAdded"><a href="#">Date Added</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+</nav>
+      </div>
+    </div>
+    <div class="container row"><!--for listing items -->
+      <div class="col-md-6">
+        <ul id="toDoList">
+        </ul>
+      </div>
+    </div>
+    <div class="container row"><!--for viewing an item details -->
+      <div class="col-md-6">
+        <h2 id="viewName"></h2>
+        <p id="viewDescription"></p>
+        <p>Due date: <span id="viewDueDate"></span></p>
+        <p>Estimated <span id="viewTime"></span> to complete</p>
       </div>
     </div>
     <div class="container row">
