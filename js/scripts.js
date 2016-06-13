@@ -71,6 +71,7 @@ $(document).ready(function() {
     var addGroupName = $('input#addGroupName').val();
     groups.push(addGroupName);
     $('#addGroup').append('<option value="' + addGroupName + '">' + addGroupName + '</option>')
+    $('#groupNavbar').append('<li id="' + addGroupName + '"><a href="#">' + addGroupName + '</a></li>')
   });
 
 
