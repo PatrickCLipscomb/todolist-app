@@ -16,12 +16,15 @@ function groupList(name, description) {
   this.groupDescription = description;
 }
 
-function allToDoItems(itemobject) {
-  this.itemName = itemobject;
-}
+var allToDoItemsKeys = [];
+var allToDoItems = {};
+var allGroupListsKeys = [];
+var allGroupLists = {};
 
-function allGroupLists(groupobject) {
-  this.groupName = nameobject;
+function updateList() {
+  allToDoItems.forEach(function(item) {
+    console.log(item);
+  });
 }
 
 $(document).ready(function() {
@@ -35,8 +38,8 @@ $(document).ready(function() {
     var addGroup = $('select#addGroup option:selected').val();
     addDueDate = $('input#addDueDate').val();
     itemToAdd = new toDoItem(addName, addDescription, addEstTime, addGroup, addDueDate);
-
-
+    allToDoItemsKeys.push(addName);
+    allToDoItems[addName] = itemToAdd;
   });
 
   $('form#addNewGroup').submit(function(event) {
