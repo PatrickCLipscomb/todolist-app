@@ -1,4 +1,6 @@
 var currentDate = new Date();
+var itemToAdd;
+var addDueDate;
 
 function toDoItem(name, description, time, group, duedate) {
   this.itemName = name;
@@ -6,7 +8,7 @@ function toDoItem(name, description, time, group, duedate) {
   this.itemTime = time;
   this.itemGroup = group;
   this.itemDueDate = duedate;
-  this.dateCreated = [currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay()];
+  this.dateCreated = [currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()];
 }
 
 function groupList(name, description) {
@@ -23,14 +25,17 @@ function allGroupLists(groupobject) {
 }
 
 $(document).ready(function() {
+
   $('form#addNewItem').submit(function(event) {
     event.preventDefault();
 
     var addName = $('input#addName').val();
     var addDescription = $('input#addDescription').val();
     var addEstTime = $('input#addEstTime').val();
-    var addGroup = $('input#addGroup').val();
-    console.log(addName);
+    var addGroup = $('select#addGroup option:selected').val();
+    addDueDate = $('input#addDueDate').val();
+    itemToAdd = new toDoItem(addName, addDescription, addEstTime, addGroup, addDueDate);
+
 
   });
 
