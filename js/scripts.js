@@ -1,11 +1,13 @@
 var currentDate = new Date();
 var itemToAdd;
 var addDueDate;
+var filterStatus;
+var groupStatus;
 
 function toDoItem(name, description, time, group, duedate) {
   this.itemName = name;
   this.itemDescription = description;
-  this.itemTime = time;
+  this.itemEstTime = time;
   this.itemGroup = group;
   this.itemDueDate = duedate;
   this.completeionStatus = false;
@@ -26,10 +28,22 @@ function resetFields() {
   $('#toDoList').empty();
 }
 
+function moreInfo() {
+  $('.moreinfo').click(function() {
+    var nameForInfo = "";
+    nameForInfo = $(this).prev().text();
+    $('#viewName').text(nameForInfo);
+    $('#viewDescription').text(allToDoItems[nameForInfo].itemDescription);
+    $('#viewDueDate').text(allToDoItems[nameForInfo].itemDueDate);
+    $('#viewTime').text(allToDoItems[nameForInfo].itemEstTime);
+  });
+}
+
 function updateList() {
   allToDoItemsKeys.forEach(function(key) {
-    $('#toDoList').append("<li>" + allToDoItems[key].itemName + "</li>");
+    $('#toDoList').append('<li><span class="name">' + allToDoItems[key].itemName + '</span><span class="moreinfo">more info</span><label for="check' + key + '">Complete</label> <input type="checkbox" id="button' + key + '" name="complete" value="" /></li>');
   });
+  moreInfo();
 }
 
 $(document).ready(function() {
@@ -55,5 +69,6 @@ $(document).ready(function() {
     var addGroupDescription = $('input#Group[Description').val();
     console.log(addGroupName);
   });
+
 
 });
