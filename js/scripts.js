@@ -8,6 +8,7 @@ function toDoItem(name, description, time, group, duedate) {
   this.itemTime = time;
   this.itemGroup = group;
   this.itemDueDate = duedate;
+  this.completeionStatus = false;
   this.dateCreated = [currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()];
 }
 
@@ -21,9 +22,13 @@ var allToDoItems = {};
 var allGroupListsKeys = [];
 var allGroupLists = {};
 
+function resetFields() {
+  $('#toDoList').empty();
+}
+
 function updateList() {
-  allToDoItems.forEach(function(item) {
-    console.log(item);
+  allToDoItemsKeys.forEach(function(key) {
+    $('#toDoList').append("<li>" + allToDoItems[key].itemName + "</li>");
   });
 }
 
@@ -31,7 +36,7 @@ $(document).ready(function() {
 
   $('form#addNewItem').submit(function(event) {
     event.preventDefault();
-
+    resetFields();
     var addName = $('input#addName').val();
     var addDescription = $('input#addDescription').val();
     var addEstTime = $('input#addEstTime').val();
@@ -40,6 +45,7 @@ $(document).ready(function() {
     itemToAdd = new toDoItem(addName, addDescription, addEstTime, addGroup, addDueDate);
     allToDoItemsKeys.push(addName);
     allToDoItems[addName] = itemToAdd;
+    updateList();
   });
 
   $('form#addNewGroup').submit(function(event) {
